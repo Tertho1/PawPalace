@@ -1,0 +1,236 @@
+:root {
+    --primary-color: #1b46a2;
+    --secondary-color: #3eada4;
+    --footer-color: rgb(124, 177, 164);
+    --text-color: white;
+    --bg-color: #f9f9f9;
+    --text-color-inv: black;
+    --background-color: rgb(227, 227, 213);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+
+}
+
+nav {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+   
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+
+}
+
+.logo-container a {
+    text-decoration: none;
+}
+
+.logo-container img {
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    /* Make the logo circular */
+}
+
+.logo-container h1 {
+    color: var(--text-color);
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.nav-links input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    font-size: 16px;
+    border-radius: 5px;
+    /* Add border-radius to the links */
+}
+
+.nav-links a:hover {
+    background-color: var(--secondary-color);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    border-radius: 5px;
+    /* Add border-radius to the dropdown button */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--bg-color);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.show {
+    display: block;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.nav-buttons button {
+    background-color: var(--text-color);
+    color: var(--text-color-inv);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    /* Add border-radius to the buttons */
+}
+
+.nav-buttons button:hover {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    transform: scale(1.2);
+}
+
+.hero{
+   height: 130vh;
+   border: 2px solid black;
+   background-image: url("assets/signup2g.jpg");
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.signup-container {
+    flex-direction: column;
+    position: absolute;
+     top: 15%;
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%);  */
+    background-color: rgba(255, 255, 255, 0.2);
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.signup-logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.signup-container h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    text-align: left;
+    margin-left: 6px;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.input-group input {
+    width: 90%;
+    padding: 10px;
+    margin: auto;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn-group button {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-group button a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.btn-group button:hover {
+    background-color: var(--secondary-color);
+}
+
+
+
+.terms {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.terms a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
