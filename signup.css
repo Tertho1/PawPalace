@@ -40,7 +40,7 @@ nav {
     height: 40px;
     margin-right: 10px;
     border-radius: 50%;
-    /* Make the logo circular */
+    
 }
 
 .logo-container h1 {
@@ -68,7 +68,7 @@ nav {
     background-color: var(--primary-color);
     font-size: 16px;
     border-radius: 5px;
-    /* Add border-radius to the links */
+   
 }
 
 .nav-links a:hover {
@@ -90,7 +90,7 @@ nav {
     align-items: center;
     font-size: 16px;
     border-radius: 5px;
-    /* Add border-radius to the dropdown button */
+    
 }
 
 .dropdown-content {
@@ -130,7 +130,7 @@ nav {
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
-    /* Add border-radius to the buttons */
+   
 }
 
 .nav-buttons button:hover {
@@ -156,8 +156,6 @@ nav {
     flex-direction: column;
     position: absolute;
      top: 15%;
-    /* left: 50%; */
-    /* transform: translate(-50%, -50%);  */
     background-color: rgba(255, 255, 255, 0.2);
     max-width: 350px;
     padding: 20px;

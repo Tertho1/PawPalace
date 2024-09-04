@@ -1,60 +1,59 @@
-<?php
-session_start();
-include_once("db_connect.php");
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  </head>
 
-// Debugging output
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+  <body>
+    <?php include 'nav.php'; ?>
 
-// Get form data
-$emailOrUsername = trim($_POST['email']);
-$password = trim($_POST['password']);
+    <main>
+      <div class="hero">
+        <div class="login-container">
+          <img src="assets/logo.png" alt="PawPalace Logo" class="login-logo" />
+          <h2>Login</h2>
+          <form action="logindo.php" method="POST">
+            <div class="input-group">
+              <label for="email">Email or Username:</label>
+              <input
+                type="text"
+                id="email"
+                placeholder="Enter your email/username"
+                name="email"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+                name="password"
+                required
+              />
+            </div>
+            <div class="btn-group">
+              <button type="submit">Login</button>
+              <button><a href="home.php">Cancel</a></button>
+            </div>
+            <div class="signup">
+              Don't have an account?<a href="signup.html" class="sign-up-link">
+                Sign up</a
+              >
+            </div>
+            <div class="forgot-password">
+              <a href="#">Forgot password?</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
 
-// Prepare SQL query to check if user exists
-$query = "SELECT * FROM users WHERE (email = ? OR username = ?)";
-$stmt = $conn->prepare($query);
-
-if (!$stmt) {
-    die('Prepare failed: ' . htmlspecialchars($conn->error));
-}
-
-$stmt->bind_param("ss", $emailOrUsername, $emailOrUsername);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc();
-
-    // Verify password
-    if (password_verify($password, $user['password'])) {
-        // Debugging output
-        // echo "Password is correct. Redirecting...";
-        // die();
-    
-        // The following won't execute if the above die() is not removed
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['logged_in'] = true;
-    
-        // Set a cookie to keep the user logged in
-        setcookie("user_id", $user['id'], time() + (86400 * 30), "/"); // 30 days expiration
-        setcookie("username", $user['username'], time() + (86400 * 30), "/");
-        setcookie("logged_in", true, time() + (86400 * 30), "/");
-    
-        header("Location: home.php"); // Redirect to a protected page after login
-        exit();
-    }
-    else {
-        $_SESSION['error'] = "Invalid password!";
-        header("Location: login.php");
-        exit();
-    }
-} else {
-    $_SESSION['error'] = "User not found!";
-    header("Location: login.html");
-    exit();
-}
-
-$stmt->close();
-$conn->close();
-?>
+    <script src="login.js"></script>
+  </body>
+</html>

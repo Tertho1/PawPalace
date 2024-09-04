@@ -3,23 +3,24 @@ function updateButtonActions() {
         .then(response => response.json())
         .then(data => {
             if (data.logged_in) {
-                // User is logged in
+
                 document.querySelector(".login1").onclick = function () {
                     window.location.href = 'profile.html';
                 };
                 document.querySelector(".signup1").onclick = function () {
                     window.location.href = 'logout.php';
                 };
-                // Optionally, update button text or other properties
-                document.querySelector(".login1").textContent = "Profile";
+
+                document.querySelector(".login1").textContent = data.username;
                 document.querySelector(".signup1").textContent = "Logout";
+
             } else {
-                // User is not logged in
+
                 document.querySelector(".login1").onclick = function () {
-                    window.location.href = 'login.html';
+                    window.location.href = 'login.php';
                 };
                 document.querySelector(".signup1").onclick = function () {
-                    window.location.href = 'signup.html';
+                    window.location.href = 'signup.php';
                 };
             }
         });
