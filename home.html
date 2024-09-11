@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PawPalace - Home</title>
     <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="nav.css" />
+    <link rel="stylesheet" href="card.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
   </head>
 
   <body>
-    
-    <?php include 'nav.php'; ?>
+    <?php include 'nav.php'; 
+    include_once("db_connect.php");
+        $donations = $conn->query("SELECT * FROM adoptions WHERE action =
+    'donate' ORDER BY id DESC LIMIT 4"); $requests = $conn->query("SELECT * FROM
+    adoptions WHERE action = 'adopt' ORDER BY id DESC LIMIT 4"); ?>
     <main>
       <div class="hero-section">
         <h2>Welcome to PawPalace</h2>
@@ -25,69 +30,30 @@
       <div class="separation"></div>
 
       
+      <?php
+      function displayCard($row) {
+          $image = $row['image'];
+          $category = $row['category'];
+          $name = $row['name'];
+          $location = $row['location'];
+          $species = $row['species'];
+          $age = $row['age'];
+          $size = $row['size'];
+          $vaccinated = $row['vaccinated'];
+          $gender = $row['gender'];
+          $neutered = $row['neutered'];
+          
+          include 'card.php';
+      }?>
       <section class="available-adoptions">
         <h2>Available Adoptions</h2>
         <div class="adoption-cards">
-          <div class="adoption-card">
-            <a href="">
-              <img src="assets/dog.jpg" alt="Pet Image" />
-              <h3>Category: Dog</h3>
-              <p>Name: Max</p>
-              <p>Location: Wari, Dhaka</p>
-              <p>Species: Dachshund</p>
-              <p>Age: 2 years</p>
-              <p>Size: Large</p>
-              <p>Vaccinated: Yes</p>
-              <p>Gender: Male</p>
-              <p>Neutered/Spayed: No</p>
-            </a>
-          </div>
-          <div class="adoption-card">
-            <a href="">
-              <img src="assets/cat.jpg" alt="Pet Image" />
-              <h3>Category: Cat</h3>
-              <p>Name: Bella</p>
-              <p>Location: Lalmohan, Bhola</p>
-              <p>Species: Deshi</p>
-              <p>Age: 1 year</p>
-              <p>Size: Small</p>
-              <p>Vaccinated: No</p>
-              <p>Gender: Female</p>
-              <p>Neutered/Spayed: No</p>
-            </a>
-          </div>
-          <div class="adoption-card">
-            <a href="">
-              <img src="assets/parrot.jpg" alt="Pet Image" />
-              <h3>Category: Bird</h3>
-              <p>Name: Tweety</p>
-              <p>Location: Savar, Dhaka</p>
-              <p>Species: Parrot</p>
-              <p>Age: 6 months</p>
-              <p>Size: Small</p>
-              <p>Vaccinated: No</p>
-              <p>Gender: Male</p>
-              <p>Neutered/Spayed: No</p>
-            </a>
-          </div>
-          <div class="adoption-card">
-            <a href="">
-              <img src="assets/rabbit.jpg" alt="Pet Image" />
-              <h3>Category: Rabbit</h3>
-              <p>Name: Thumper</p>
-              <p>Location: Mirpur-1, Dhaka</p>
-              <p>Species: Netherland Dwarf</p>
-              <p>Age: 1.5 years</p>
-              <p>Size: Small</p>
-              <p>Vaccinated: Yes</p>
-              <p>Gender: Female</p>
-              <p>Neutered/Spayed: Yes</p>
-            </a>
-          </div>
+          <?php while ($row = $donations->fetch_assoc()) { displayCard($row); }
+          ?>
         </div>
         <button
           class="browse-all-btn"
-          onclick="window.location.href='find-adoptions.php'"
+          onclick="window.location.href='available-adoptions.php'"
         >
           Browse All
         </button>
@@ -95,58 +61,11 @@
 
       <div class="separation"></div>
 
-      
       <section class="adoption-requests">
         <h2>Adoption Requests</h2>
         <div class="adoption-cards">
-          <div class="adoption-card">
-            <img src="assets/dogr.jpg" alt="Pet Image" />
-            <h3>Category: Dog</h3>
-            <p>Name: Unspecified</p>
-            <p>Location: Jatrabari,Dhaka</p>
-            <p>Species: Welsh Corgi</p>
-            <p>Age: 6 months</p>
-            <p>Size: Unspecified</p>
-            <p>Vaccinated: Unspecified</p>
-            <p>Gender: Unspecified</p>
-            <p>Neutered/Spayed: Unspecified</p>
-          </div>
-          <div class="adoption-card">
-            <img src="assets/cat.jpg" alt="Pet Image" />
-            <h3>Category: Cat</h3>
-            <p>Name: Unspecified</p>
-            <p>Location: Keranigonj,Dhaka</p>
-            <p>Species: Unspecified</p>
-            <p>Age: 3 months</p>
-            <p>Size: Small</p>
-            <p>Vaccinated: Unspecified</p>
-            <p>Gender: Female</p>
-            <p>Neutered/Spayed: Unspecified</p>
-          </div>
-          <div class="adoption-card">
-            <img src="assets/parrot.jpg" alt="Pet Image" />
-            <h3>Category: Bird</h3>
-            <p>Name: Unspecified</p>
-            <p>Location: Motijheel,Dhaka</p>
-            <p>Species: Unspecified</p>
-            <p>Age: 4 months</p>
-            <p>Size: Unspecified</p>
-            <p>Vaccinated: Unspecified</p>
-            <p>Gender: Unspecified</p>
-            <p>Neutered/Spayed: Unspecified</p>
-          </div>
-          <div class="adoption-card">
-            <img src="assets/rabbit.jpg" alt="Pet Image" />
-            <h3>Category: Rabbit</h3>
-            <p>Name: Unspecified</p>
-            <p>Location: Uttara,Dhaka</p>
-            <p>Species: Unspecified</p>
-            <p>Age: 6 months</p>
-            <p>Size: Unspecified</p>
-            <p>Vaccinated: Yes</p>
-            <p>Gender: Unspecified</p>
-            <p>Neutered/Spayed: Unspecified</p>
-          </div>
+          <?php while ($row = $requests->fetch_assoc()) { displayCard($row); }
+          ?>
         </div>
         <button
           class="browse-all-btn"
@@ -158,7 +77,6 @@
 
       <div class="separation"></div>
 
-      
       <section class="contact-us">
         <h2>Quick Links</h2>
         <div class="quicklinks">
