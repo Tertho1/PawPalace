@@ -33,3 +33,7 @@ window.onclick = function (event) {
         modal.style.display = "none"; // Hide the modal
     }
 };
+function viewPosts(userId) {
+    // Redirect to the view-posts.php page with the user's ID
+    window.location.href = 'view-posts.php?user_id=' + userId;
+}

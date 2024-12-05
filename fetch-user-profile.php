@@ -30,7 +30,8 @@ if (isset($_POST['user_id'])) {
         echo "<p><strong>Address:</strong> " . htmlspecialchars($user['address']) . "</p>";
         echo "<p><strong>Contact Number:</strong> " . htmlspecialchars($user['contact_number']) . "</p>";
         echo "<p class='joined-date'><strong>Member Since:</strong> " . date('F Y', strtotime($user['joined_date'])) . "</p>";
-        echo "<button class='view-posts-btn' onclick='viewPosts(" . $user_id . ")'>View Posts</button>";
+        echo "<button class='view-posts-btn' onclick='viewPosts($user_id)'>View Posts</button>";
+
         echo "</div>";
         echo "</div>"; // Close user-details
         echo "</div>"; // Close profile-card-right

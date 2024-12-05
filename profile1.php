@@ -44,7 +44,7 @@ $is_own_profile = ($_SESSION['user_id'] == $user_id);
 
                 <h2 class="username"><?php echo htmlspecialchars($user['username']); ?></h2>
                 <p class="joined-date">Since: <?php echo date('F Y', strtotime($user['joined_date'])); ?></p>
-                <a href="user-posts.php?user_id=<?php echo $user_id; ?>" class="posts-btn">View Posts</a>
+                <a href="view-posts.php?user_id=<?php echo $user_id; ?>" class="posts-btn">View Posts</a>
             </div>
 
             <div class="editleft hidden">

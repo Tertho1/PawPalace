@@ -22,13 +22,17 @@
 /* Post details and description split into two sections */
 .info-container {
   display: flex;
+  margin-top: -10px;
   /* justify-content: space-between; */
   gap: 20px;
 }
 
 /* Post details (left side) */
 .post-details {
+  display: flex;
+  flex-direction: column;
   flex: 1;
+  gap: 15px;
 }
 
 /* Post description (right side) */
@@ -316,6 +320,7 @@
 .post-details-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  margin-top: 10px;
   gap: 15px; /* Space between items */
 }
 

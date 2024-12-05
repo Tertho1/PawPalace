@@ -27,6 +27,7 @@
         $location = isset($_GET['location']) ? $_GET['location'] : '';
 
         // Build the SQL query
+        // Build the SQL query
         $sql = "SELECT * FROM adoptions WHERE 1=1";
         if ($type) {
             $sql .= " AND action='$type'";
@@ -41,8 +42,12 @@
             $sql .= " AND location LIKE '%$location%'";
         }
 
+        // Ensure posts are always in descending order
+        $sql .= " ORDER BY id DESC";
+
         // Execute the query and return the result
         $result = $conn->query($sql);
+
         ?>
 
         <div class="adoption-cards">
