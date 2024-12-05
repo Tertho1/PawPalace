@@ -100,19 +100,6 @@ $is_own_profile = ($_SESSION['user_id'] == $user_id);
     <?php include 'footer.php'; ?>
     <script src="updatebutton.js"></script>
     <script src="profile.js"></script>
-    <!-- <script>
-        document.getElementById('editProfileBtn').addEventListener('click', function () {
-            // Toggle visibility of the form and user details
-            document.querySelector('.user-details').classList.add('hidden');
-            document.querySelector('.profile-form').classList.remove('hidden');
-        });
-
-        document.getElementById('cancelBtn').addEventListener('click', function () {
-            // Toggle back to user details and hide the form
-            document.querySelector('.user-details').classList.remove('hidden');
-            document.querySelector('.profile-form').classList.add('hidden');
-        });
-    </script> -->
 </body>
 
 </html>

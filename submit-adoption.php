@@ -16,8 +16,8 @@ $target_file = $target_dir . $unique_file_name;
 $image = "uploads/default.jpg"; // Default image path
 
 // Prepare the SQL query to insert form data into the database
-$stmt = $conn->prepare("INSERT INTO adoptions (category, name, location, species, age, size, vaccinated, gender, neutered, image, action, user_id, username) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("sssssssssssss", $category, $name, $location, $species, $age, $size, $vaccinated, $gender, $neutered, $image, $action, $user_id, $username);
+$stmt = $conn->prepare("INSERT INTO adoptions (category, name, location, species, age, size, vaccinated, gender, neutered, image, action, user_id, username, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssssssssssss", $category, $name, $location, $species, $age, $size, $vaccinated, $gender, $neutered, $image, $action, $user_id, $username, $description);
 
 // Get the form data
 $category = $_POST['category'];
@@ -32,6 +32,9 @@ $neutered = !empty($_POST['neutered']) ? $_POST['neutered'] : 'Not Specified';
 $action = $_POST['action-select'];
 $user_id = $_POST['user_id']; // Get the user ID from the form data
 $username = $_POST['username']; // Get the username from the form data
+
+// Capture the description
+$description = !empty($_POST['description']) ? $_POST['description'] : 'No description provided'; // Default description
 
 // Move the file only if there's no error
 $file_moved = false;

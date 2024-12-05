@@ -23,12 +23,16 @@ document.getElementById('editProfileBtn').addEventListener('click', function () 
     // Toggle visibility of the form and user details
     document.querySelector('.user-details').classList.add('hidden');
     document.querySelector('.profile-form').classList.remove('hidden');
+    document.querySelector(".editleft").classList.remove('hidden');
+    document.querySelector(".left-previous").classList.toggle('hidden');
 });
 
 document.getElementById('cancelBtn').addEventListener('click', function () {
     // Toggle back to user details and hide the form
     document.querySelector('.user-details').classList.remove('hidden');
     document.querySelector('.profile-form').classList.add('hidden');
+    document.querySelector(".editleft").classList.add('hidden');
+    document.querySelector(".left-previous").classList.toggle('hidden');
 });
 
 
@@ -40,5 +44,28 @@ function toggleProfilePictureInput() {
         profilePictureInput.style.display = 'none';
     }
 }
+function triggerFileInput() {
+    document.getElementById('fileinput').click();
+}
+document.querySelector('.profile-form').addEventListener('submit', function (event) {
+    // Prevent default form submission
+    event.preventDefault();
+
+    // Get the username from the editleft section
+    const editUsernameInput = document.getElementById('edit-username');
+
+    // Check if the editleft section is visible
+    if (!document.querySelector('.editleft').classList.contains('hidden')) {
+        // Assign the value from the editleft username input to the form's username input
+        const formUsernameInput = document.getElementById('username');
+        formUsernameInput.value = editUsernameInput.value;
+    }
+
+    // After setting the value, submit the form
+    this.submit();
+});
+
+
+
 
 

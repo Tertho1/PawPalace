@@ -28,8 +28,8 @@
 
 .profile-pic {
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
   object-fit: cover;
   margin-bottom: 15px;
 }
@@ -75,8 +75,8 @@
 .posts-btn {
   margin-top: 10px;
   padding: 8px 16px;
-  background-color: #28a745;
-  color: white;
+  background-color: #d1ba5e;
+  color: rgb(252, 248, 248);
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s;

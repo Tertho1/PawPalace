@@ -12,16 +12,19 @@
 </head>
 
 <body>
-    <?php include 'nav.php'; ?>
-    
+    <?php include 'nav.php';
+    include_once('db_connect.php');
+    $donations = $conn->query("SELECT * FROM adoptions WHERE action = 'donate' ORDER BY id DESC"); ?>
+
     <section class="available-adoptions">
         <h2 class="header1">All Available Adoptions</h2>
         <div class="adoption-cards">
             <?php
-            include_once('db_connect.php');
-            $donations = $conn->query("SELECT * FROM adoptions WHERE action = 'donate' ORDER BY id DESC");
+
             function displayCard($row)
             {
+
+
                 $image = $row['image'];
                 $category = $row['category'];
                 $name = $row['name'];
@@ -32,7 +35,7 @@
                 $vaccinated = $row['vaccinated'];
                 $gender = $row['gender'];
                 $neutered = $row['neutered'];
-
+                $id = $row['id'];
                 include 'card.php';
             }
 
@@ -50,7 +53,7 @@
     </section>
 
     <?php include 'footer.php'; ?>
-    
+
     <script src="updatebutton.js"></script>
 </body>
 

@@ -5,7 +5,7 @@ function updateButtonActions() {
             if (data.logged_in) {
 
                 document.querySelector(".login1").onclick = function () {
-                    window.location.href = 'profile.php';
+                    window.location.href = 'profile1.php';
                 };
                 document.querySelector(".signup1").onclick = function () {
                     window.location.href = 'logout.php';

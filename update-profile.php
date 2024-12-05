@@ -12,12 +12,24 @@ $stmt->execute();
 $result = $stmt->get_result();
 $current_user = $result->fetch_assoc();
 
-// Process form data
+// Capture form data
 $first_name = $_POST['first-name'];
 $last_name = $_POST['last-name'];
 $email = $_POST['email'];
 $address = $_POST['address'];
 $contact_number = $_POST['contact-number'];
+$username = $_POST['username']; // Add this line to capture the username
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     // Output the value of $username
+//     var_dump($_POST);
+//     // or use print_r($username);
+
+//     // Stop further execution for debugging purposes
+//     exit;
+// }
+
+
 
 // Handle privacy settings
 $privacy_settings = [
@@ -47,13 +59,13 @@ if (!empty($_FILES['profile-picture']['name'])) {
 
 // Update user info in the database
 $query = "UPDATE users 
-          SET first_name = ?, last_name = ?, email = ?, address = ?, contact_number = ?, profile_picture = ?, privacy_settings = ?
+          SET first_name = ?, last_name = ?, email = ?, address = ?, contact_number = ?, username = ?, profile_picture = ?, privacy_settings = ?
           WHERE id = ?";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("sssssssi", $first_name, $last_name, $email, $address, $contact_number, $profile_picture, $privacy_settings_json, $user_id);
+$stmt->bind_param("ssssssssi", $first_name, $last_name, $email, $address, $contact_number, $username, $profile_picture, $privacy_settings_json, $user_id);
 $stmt->execute();
 
 // Redirect back to the profile page
-header("Location: profile.php");
+header("Location: profile1.php");
 exit;
 ?>

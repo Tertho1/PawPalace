@@ -83,9 +83,11 @@
                 $vaccinated = $row['vaccinated'];
                 $gender = $row['gender'];
                 $neutered = $row['neutered'];
-
+                $id = $row['id'];
                 include 'card.php';
             }
+
+
             ?>
         </div>
     </section>

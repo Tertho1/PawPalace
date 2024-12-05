@@ -33,8 +33,16 @@
         <label for="name">Name of Pet:</label>
         <input type="text" id="name" name="name">
 
+        <!-- <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required> -->
+
         <label for="location">Location:</label>
-        <input type="text" id="location" name="location" required>
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <input type="text" class="cur-loc" id="location" name="location" required>
+            <button type="button" id="detect-location" style="cursor: pointer;">Detect Location</button>
+        </div>
+        <p id="location-status" style="color: gray; font-size: 0.9em;"></p>
+
 
         <label for="species">Species:</label>
         <input type="text" id="species" name="species">
@@ -65,15 +73,18 @@
             <option value="No">No</option>
         </select>
 
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" cols="50" required></textarea>
+
         <label for="image">Pet Image:</label>
         <input type="file" id="image" name="image" accept="image/*">
         <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
         <input type="hidden" name="username" value="<?php echo $_SESSION['username']; ?>">
 
-
         <button type="submit">Post</button>
     </form>
     <script src="updatebutton.js"></script>
+    <script src="location.js"></script>
 </body>
 
 </html>

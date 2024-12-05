@@ -40,16 +40,30 @@ $is_own_profile = ($_SESSION['user_id'] == $user_id);
         <div class="profile-card-left">
             <img src="<?php echo htmlspecialchars($user['profile_picture']); ?>" alt="Profile Picture"
                 class="profile-pic">
-            <h2 class="username"><?php echo htmlspecialchars($user['username']); ?></h2>
-            <p class="joined-date">Joined since: <?php echo date('F Y', strtotime($user['joined_date'])); ?></p>
-            <a href="user-posts.php?user_id=<?php echo $user_id; ?>" class="posts-btn">View Posts</a>
+            <div class="left-previous">
+
+                <h2 class="username"><?php echo htmlspecialchars($user['username']); ?></h2>
+                <p class="joined-date">Since: <?php echo date('F Y', strtotime($user['joined_date'])); ?></p>
+                <a href="user-posts.php?user_id=<?php echo $user_id; ?>" class="posts-btn">View Posts</a>
+            </div>
+
+            <div class="editleft hidden">
+                <button type="button" onclick="triggerFileInput()">Change Picture</button>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="edit-username" name="edit-username"
+                        value="<?php echo htmlspecialchars($user['username']); ?>">
+                </div>
+            </div>
+
+
             <!-- Posts Button -->
         </div>
         <div class="profile-card-right">
             <div class="user-details">
                 <p><strong>Name:</strong>
                     <?php echo htmlspecialchars($user['first_name'] . ' ' . $user['last_name']); ?></p>
-                <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
+                <p><strong>E-mail:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
                 <p><strong>Address:</strong> <?php echo htmlspecialchars($user['address']); ?></p>
                 <p><strong>Contact Number:</strong> <?php echo htmlspecialchars($user['contact_number']); ?></p>
                 <?php if ($is_own_profile): ?>
@@ -60,13 +74,18 @@ $is_own_profile = ($_SESSION['user_id'] == $user_id);
 
             <form class="profile-form hidden" method="POST" action="update-profile.php" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label>Update Profile Picture</label>
-                    <input type="file" name="profile-picture" accept="image/*">
+                    <!-- <label>Update Profile Picture</label> -->
+                    <input type="file" class="hidden" id="fileinput" name="profile-picture" accept="image/*">
                 </div>
                 <div class="form-group">
                     <label>First Name</label>
                     <input type="text" name="first-name" value="<?php echo htmlspecialchars($user['first_name']); ?>">
                     <input type="checkbox" name="public-first-name" <?php echo isset($privacy_settings['first_name']) && $privacy_settings['first_name'] ? 'checked' : ''; ?>> Public
+                </div>
+                <div class="form-group hidden">
+                    <label>Username</label>
+                    <input type="text" id="username" name="username"
+                        value="<?php echo htmlspecialchars($user['username']); ?>">
                 </div>
                 <div class="form-group">
                     <label>Last Name</label>
@@ -99,19 +118,7 @@ $is_own_profile = ($_SESSION['user_id'] == $user_id);
     </div>
     <?php include 'footer.php'; ?>
     <script src="updatebutton.js"></script>
-    <script>
-        document.getElementById('editProfileBtn').addEventListener('click', function () {
-            // Toggle visibility of the form and user details
-            document.querySelector('.user-details').classList.add('hidden');
-            document.querySelector('.profile-form').classList.remove('hidden');
-        });
-
-        document.getElementById('cancelBtn').addEventListener('click', function () {
-            // Toggle back to user details and hide the form
-            document.querySelector('.user-details').classList.remove('hidden');
-            document.querySelector('.profile-form').classList.add('hidden');
-        });
-    </script>
+    <script src="profile.js"></script>
 </body>
 
 </html>
