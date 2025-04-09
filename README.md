@@ -32,7 +32,7 @@ pawpalace/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/pawpalace.git
+git clone https://github.com/Tertho1/PawPalace.git
 ```
 
 2. Configure your web server (XAMPP/WAMP) to point to the project directory
